@@ -6,15 +6,18 @@
 # https://www.kaggle.com/rounakbanik/the-movies-dataset#movies_metadata.csv
 
 
-from surprise import SVD
-from surprise import Dataset
-from surprise.model_selection import cross_validate
+import pandas as pd
+import matplotlib as plt
+import numpy as np
 
-# Load the movielens-100k dataset (download it if needed).
-data = Dataset.load_builtin('movies_metadata.cvs')
+df = pd.read_csv("movies_metadata.csv")
 
-# Use the famous SVD algorithm.
-algo = SVD()
+#df.info()
 
-# Run 5-fold cross-validation and print results.
-cross_validate(algo, data, measures=['RMSE', 'MAE'], cv=5, verbose=True)
+df['budget'] = pd.to_numeric(df['budget'])
+
+df.info()
+
+X = pd.DataFrame(df.loc['revenue'])
+
+Y = pd.DataFrame(df - df.loc['revenue'])
