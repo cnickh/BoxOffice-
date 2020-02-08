@@ -13,7 +13,7 @@ import numpy as np
 
 df = pd.read_csv("movies_metadata.csv")
 
-#df.info()
+df.info()
 
 df['budget'] = pd.to_numeric(df['budget'])
 
