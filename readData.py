@@ -10,16 +10,15 @@ import pandas as pd
 import matplotlib as plt
 import numpy as np
 
+
 df = pd.read_csv("movies_metadata.csv")
 
 #df.info()
 
-#df['budget'] = pd.to_numeric(df['budget'])
+df['budget'] = pd.to_numeric(df['budget'])
 
-#df.info()
+df.info()
 
-X = pd.DataFrame(df['revenue'])
+X = pd.DataFrame(df.loc['revenue'])
 
-Y = pd.DataFrame(df.loc[:,df.columns != 'revenue'])
-
-print(X)
+Y = pd.DataFrame(df - df.loc['revenue'])
