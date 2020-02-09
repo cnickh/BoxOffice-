@@ -19,10 +19,11 @@ df.dropna(inplace=True)
 df['budget'] = pd.to_numeric(df['budget'])
 df['id'] = pd.to_numeric(df['id'])
 df['belongs_to_collection'] = pd.to_numeric(df['belongs_to_collection'])
-# df = df[df.revenue > 0]
+df = df[df.revenue > 0]
+print(df['revenue'].max())
 #df = df[df.budget > 0]
 # df['budget:revenue'] = df['budget'] / df['revenue']
-# df.dropna(inplace=True)
+#df.dropna(inplace=True)
 print(len(df))
 
 def LinearRegression(X,Y):
